@@ -31,16 +31,16 @@ module t_ctrlunit;
 
     // Initialise the Unit Under Test
     ctrlunit uut(
-        .opcode( OPCode ),
-        .funct( Funct ),
-        .memtoreg( MemToReg ),
-        .memwrite( MemWrite ),
-        .branch( Branch ),
-        .alusrc( ALUSrc ),
-        .regdst( RegDst ),
-        .regwrite( RegWrite ),
-        .jump( Jump ),
-        .alucontrol( ALUControl )
+        .OPCode( opcode ),
+        .Funct( funct ),
+        .MemToReg( memtoreg ),
+        .MemWrite( memwrite ),
+        .Branch( branch ),
+        .ALUSrc( ALUSrc ),
+        .RegDst( regdst ),
+        .RegWrite( regwrite ),
+        .Jump( jump ),
+        .ALUControl( alucontrol )
     );
 
     initial begin
