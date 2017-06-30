@@ -31,10 +31,10 @@ module t_dmem;
 
     // Instantiate the Unit Under Test
     dmem uut (
-        .rd( rd ),
-        .a( A ),
-        .wd( WD ),
-        .we( WE ),
+        .RD( rd ),
+        .A( a ),
+        .WD( wd ),
+        .WE( we ),
         .clk( clk )
     );
 
