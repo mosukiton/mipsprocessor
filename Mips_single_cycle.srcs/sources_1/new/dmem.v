@@ -28,7 +28,7 @@ module dmem(
 
     reg [31:0] RAM [255:0];
 
-    assign RD = RAM[A];
+    assign RD = (A != 0) ? RAM[A] : 0;
 
     always @ (posedge clk)
         if (WE)
