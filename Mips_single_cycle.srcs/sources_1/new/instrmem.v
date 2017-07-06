@@ -18,8 +18,6 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
-
 module instrmem(
     output  [31:0] RD,
     input   [31:0] A
@@ -28,7 +26,7 @@ module instrmem(
     reg [31:0] mem [0:127];
 
     initial begin
-        $readmemh(memfile.dat, mem); // initialise ROM
+        $readmemh("memfile.dat", mem); // initialise ROM
     end
 
     assign RD = mem[A];
