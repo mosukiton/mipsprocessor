@@ -49,14 +49,15 @@ module t_alu;
 
         // Stimulus here
 
-        #100 a = 32'hFFFFFFFF; b = 32'hFFFFFFFF; alu_sel = 3'b000; // z = FFFFFFFF AND FFFFFFFF
-        #100 a = 32'hFFFF0000; b = 32'h0000FFFF; alu_sel = 3'b001; // z = FFFF0000 OR 0000FFFF
-        #100 a = 32'h00000001; b = 32'h00000001; alu_sel = 3'b010; // z = 1 + 1
+        #100 a = 32'h0000FFFF; b = 32'h000000FF; alu_sel = 3'b000; // z = 0000FFFF AND 000000FF = 000000FF
+        #100 a = 32'hFFFF0000; b = 32'h0000FFFF; alu_sel = 3'b001; // z = FFFF0000 OR 0000FFFF = FFFFFFFF
+        #100 a = 32'h00000001; b = 32'h00000001; alu_sel = 3'b010; // z = 1 + 1 = 00000002
 
-        #100 a = 32'hFFFFFFFF; b = 32'hFFFFFFFF; alu_sel = 3'b100; // z = FFFFFFFF AND 00000000
-        #100 a = 32'h0000FFFF; b = 32'h0000FFFF; alu_sel = 3'b101; // z = 0000FFFF OR FFFF0000
-        #100 a = 32'hFFFFFFFF; b = 32'h0000000F; alu_sel = 3'b110; // z = FFFFFFFF - 0000000F
-        #100 a = 32'h00000000; b = 32'h00000001; alu_sel = 3'b111; // SLT, z = 00000001
+        #100 a = 32'hFFFFFFFF; b = 32'hFFFFFFFF; alu_sel = 3'b100; // z = FFFFFFFF AND 00000000 = 00000000
+        #100 a = 32'h0000FFFF; b = 32'h0000FFFF; alu_sel = 3'b101; // z = 0000FFFF OR FFFF0000 = FFFFFFFF
+        #100 a = 32'h7FFFFFFF; b = 32'h0000000F; alu_sel = 3'b110; // z = 7FFFFFFF - 0000000F = 7FFFFFF0
+        #100 a = 32'h00000000; b = 32'h00000001; alu_sel = 3'b111; // SLT, z = 00000000
+        #100 a = 32'h00000001; b = 32'h00000000; alu_sel = 3'b111; // SLT, z = 00000001
     end
 
 endmodule
