@@ -23,12 +23,13 @@ module instrmem(
     input   [31:0] A
     );
 
-    reg [31:0] mem [0:127];
+    reg [7:0] mem [0:127];
 
     initial begin
-        $readmemh("memfile.dat", mem); // initialise ROM
+        $readmemh("memfilebyte.dat", mem); // initialise ROM
     end
 
-    assign RD = mem[A];
+    //RD = a concantenation of 4 bytes in adjacent addresses
+    assign RD = {mem[A], mem[A+1], mem[A+2], mem[A+3]};
 
 endmodule
