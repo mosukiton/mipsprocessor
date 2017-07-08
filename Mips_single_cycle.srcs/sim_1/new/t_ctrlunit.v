@@ -36,7 +36,7 @@ module t_ctrlunit;
         .MemToReg( memtoreg ),
         .MemWrite( memwrite ),
         .Branch( branch ),
-        .ALUSrc( ALUSrc ),
+        .ALUSrc( alusrc ),
         .RegDst( regdst ),
         .RegWrite( regwrite ),
         .Jump( jump ),
