@@ -3,11 +3,11 @@ Mips 32bit Processor, similar to MIPS I architecture, in single cycle and pipeli
 
 Current progress:
 All base modules are written, tested and verified:
-    *   ALU
-    *   Control Unit
-    *   Register File
-    *   Instruction Memory
-    *   Data Memory
+   ALU
+   Control Unit
+   Register File
+   Instruction Memory
+   Data Memory
 
 To Do List:
     *   Test IF, ID, EX, MEM, WB modules
