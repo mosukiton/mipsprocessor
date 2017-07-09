@@ -10,24 +10,23 @@ Instruction Memory,
 Data Memory,
 
 To Do List:
-<ul>
-<li>Test IF, ID, EX, MEM, WB modules<li>
-
-Test Single Cycle Processor
-
-Write Radix-4 Booth Encoded Multiplication Module
+<ol>
+<li>Test IF, ID, EX, MEM, WB modules</li>
+<li>Test Single Cycle Processor</li>
+<li>Write Radix-4 Booth Encoded Multiplication Module</li>
     -  Create HI/LO registers in RF
 
-Write L/R Arithmetic/Logical shift function and module
+<li>Write L/R Arithmetic/Logical shift function and module</li>
 
-Create new Control Signals where necessary and adjust control unit code
+<li>Create new Control Signals where necessary and adjust control unit code</li>
 
-Test New modules:
-    -   Individually
-    -   As part of their greater modules (ID, EX and WB)
-    -   As part of the Single Cycle Processory
+<li>Test New modules:</li>
+    -   Individually</li>
+    -   As part of their greater modules (ID, EX and WB)</li>
+    -   As part of the Single Cycle Processory</li>
 
-Pipeline the IF, ID, EX, MEM and WB modules
+<li>Pipeline the IF, ID, EX, MEM and WB modules</li>
 
-Test the pipelined modules as a complete Pipelined Processor
-</ul>
+
+<li>Test the pipelined modules as a complete Pipelined Processor</li>
+</ol>
