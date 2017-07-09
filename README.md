@@ -3,7 +3,7 @@ Mips 32bit Processor, similar to MIPS I architecture, in single cycle and pipeli
 
 Current progress:
 <ul>
-    <li>All base modules are written, tested and verified:
+    <li>All base modules are written, tested:
         <ul>
             <li>ALU</li>
             <li>Control Unit</li>
@@ -12,6 +12,8 @@ Current progress:
             <li>Data Memory</li>
         </ul>
    </li>
+   <li>IF, ID, EX, MEM, WB are written</li>
+   <li>Single Cyle Processor Module is written</li>
 </ul>
 
 To Do List:
