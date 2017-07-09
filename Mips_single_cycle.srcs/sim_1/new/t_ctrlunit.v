@@ -52,34 +52,34 @@ module t_ctrlunit;
         #100;
 
         // Stimulus here
-        #10 opcode = 6'b000000; funct = 6'b100000; // rtype ADD
+        #10 opcode = 6'h00; funct = 6'h20; // rtype ADD, regdst, regwrite, aluop=11, alucontrol=2(add)
         #40;
 
-        #10 opcode = 6'b000000; funct = 6'b100010; // rtype SUB
+        #10 opcode = 6'h00; funct = 6'h22; // rtype SUB, regdst, regwrite, aluop=11, alucontrol=6(sub)
         #40;
 
-        #10 opcode = 6'b000000; funct = 6'b100100; // rtype AND
+        #10 opcode = 6'h00; funct = 6'h24; // rtype AND, regdst, regwrite, aluop=11, alucontrol=0(and)
         #40;
 
-        #10 opcode = 6'b000000; funct = 6'b100101; // rtype OR
+        #10 opcode = 6'h00; funct = 6'h25; // rtype OR, regdst, regwrite, aluop=11, alucontrol=1(or)
         #40;
         
-        #10 opcode = 6'b000000; funct = 6'b101010; // rtype SLT
+        #10 opcode = 6'h00; funct = 6'h2A; // rtype SLT, regdst, regwrite, aluop=11, alucontrol=7(slt)
         #40;
 
-        #10 opcode = 6'b100011; // LW
+        #10 opcode = 6'h23; // LW, memtoreg, alusrc, regwrite, aluop=00, alucontrol=2(add)
         #40;
 
-        #10 opcode = 6'b101011; // SW
+        #10 opcode = 6'h2B; // SW, memwrite, alusrc, aluop=00, alucontrol=2(add)
         #40;
 
-        #10 opcode = 6'b000100; // BEQ
+        #10 opcode = 6'h04; // BEQ, branch, aluop=01, alucontrol=6(sub)
         #40;
 
-        #10 opcode = 6'b001000; // ADDI
+        #10 opcode = 6'h08; // ADDI, alusrc, regwrite, aluop=00, alucontrol=2(add)
         #40;
 
-        #10 opcode = 6'b000010; // J
+        #10 opcode = 6'h02; // J, jump, aluop=00, alucontrol=2(add)
         #40;
     end
 
