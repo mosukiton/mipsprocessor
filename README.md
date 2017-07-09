@@ -20,10 +20,10 @@ To Do List:
 
 <li>Create new Control Signals where necessary and adjust control unit code</li>
 
-<li>Test New modules:</li>
-    -   Individually</li>
-    -   As part of their greater modules (ID, EX and WB)</li>
-    -   As part of the Single Cycle Processory</li>
+<li>Test New modules:<ol>
+    <li>Individually</li>
+    <li>As part of their greater modules (ID, EX and WB)</li>
+    <li>As part of the Single Cycle Processory</li></ol></li>
 
 <li>Pipeline the IF, ID, EX, MEM and WB modules</li>
 
