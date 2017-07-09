@@ -2,19 +2,24 @@
 Mips 32bit Processor, similar to MIPS I architecture, in single cycle and pipelined
 
 Current progress:
-All base modules are written, tested and verified:
-ALU,
-Control Unit,
-Register File,
-Instruction Memory,
-Data Memory,
+<ul>
+    <li>All base modules are written, tested and verified:
+        <ul>
+            <li>ALU</li>
+            <li>Control Unit</li>
+            <li>Register File</li>
+            <li>Instruction Memory</li>
+            <li>Data Memory</li>
+        </ul>
+   </li>
+</ul>
 
 To Do List:
 <ol>
 <li>Test IF, ID, EX, MEM, WB modules</li>
 <li>Test Single Cycle Processor</li>
-<li>Write Radix-4 Booth Encoded Multiplication Module</li>
-    -  Create HI/LO registers in RF
+<li>Write Radix-4 Booth Encoded Multiplication Module<ol>
+    <li>Create HI/LO registers in RF</li></ol></li>
 
 <li>Write L/R Arithmetic/Logical shift function and module</li>
 
