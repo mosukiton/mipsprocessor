@@ -10,7 +10,8 @@ Instruction Memory,
 Data Memory,
 
 To Do List:
-Test IF, ID, EX, MEM, WB modules
+<ul>
+<li>Test IF, ID, EX, MEM, WB modules<li>
 
 Test Single Cycle Processor
 
@@ -29,3 +30,4 @@ Test New modules:
 Pipeline the IF, ID, EX, MEM and WB modules
 
 Test the pipelined modules as a complete Pipelined Processor
+</ul>
