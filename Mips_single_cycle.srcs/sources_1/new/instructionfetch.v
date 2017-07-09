@@ -27,18 +27,19 @@ module instructionfetch(
     input clk, JumpF, PCSrcF
     );
 
-    wire [31:0] JumpMux, PCPrime, PCJump, PC, address;
+    wire [31:0] JumpMux, PCPrime, PCJump, address;
+    reg [31:0] PC;
 
     instrmem instrmem_if(
-        .address( A ),
-        .instruction( RD )
+        .A( address ),
+        .RD( instruction )
     );
 
     // y = enable ? enable=1 : enable=0
     assign JumpMux = PCSrcF ? PCBranchF : PCPlus4F;
     assign PCPrime = JumpF ? PCJump : JumpMux;
 
-    assign PCJump = {{PCPlus4[31:28]}, {WAinstr}};
+    assign PCJump = {{PCPlus4F[31:28]}, {WAinstrF}};
 
     assign PCPlus4F = PC + 32'h4;
 
