@@ -3,7 +3,7 @@ Mips 32bit Processor, similar to MIPS I architecture, in single cycle and pipeli
 
 Current progress:
 <ul>
-    <li>All base modules are written, tested:
+    <li>All base modules are written and tested:
         <ul>
             <li>ALU</li>
             <li>Control Unit</li>
@@ -28,7 +28,7 @@ To Do List:
 <li>Test New modules:<ol>
     <li>Individually</li>
     <li>As part of their greater modules (ID, EX and WB)</li>
-    <li>As part of the Single Cycle Processory</li></ol></li>
+    <li>As part of the Single Cycle Processor</li></ol></li>
 <li>Pipeline the IF, ID, EX, MEM and WB modules</li>
 <li>Test the pipelined modules as a complete Pipelined Processor</li>
 </ol>
