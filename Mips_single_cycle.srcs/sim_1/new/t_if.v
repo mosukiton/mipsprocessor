@@ -44,6 +44,7 @@ module t_if;
     // Initialise the clock
     initial begin
         clk = 0;
+        #20;
         forever begin
             #10 clk = 1;
             #10 clk = 0;
@@ -53,21 +54,21 @@ module t_if;
     initial begin
         // Initialise Inputs
         pcBranch = 0;
-        waInstrction = 0;
+        waInstruction = 0;
         jump = 0;
         pcSrc = 0;
 
-        //State 0: Next Instruction
-        #10 jump = 0; pcSrc = 0;
-        #40 jump = x; pcSrc = x;
+        #100; // Allow normal PC implementation to occur
 
         // State 1: Branch Instruction
-        #10 jump = 0; pcSrc = 1; pcBranch = 32'h0000003C;
-        #40 jump = x; pcSrc = x;
+        #10 jump = 0; pcSrc = 1; pcBranch = 32'h00000004;
+        #20 jump = 0; pcSrc = 0; pcBranch = 32'h00000000;
+
+        #100; // Wait 100 until next state is tested
 
         // State 2: Jump Instruction
-        #10 jump = 1; pcSrc = 0; waInstruction = 27'h000014;
-        #40 jump = x; pcSrc = x;
+        #20 jump = 1; pcSrc = 0; waInstruction = 27'h00002c;
+        #20 jump = 0; pcSrc = 0; waInstruction = 27'h000000;
 
     end
 
