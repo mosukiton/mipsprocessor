@@ -13,7 +13,7 @@ Current progress:
         </ul>
    </li>
    <li>IF, ID, EX, MEM, WB are written</li>
-   <li>t_IF is written and IF works as intended</li>
+   <li>t_IF is written and IF now works as intended</li>
    <li>Single Cyle Processor Module is written</li>
 </ul>
 
