@@ -49,25 +49,25 @@ module instructiondecode(
     assign funct = instruction[5:0];
 
     ctrlunit ctrlunit_id(
-        .opcode( OPCode ),
-        .funct( Funct ),
-        .MemToRegD( MemToReg ),
-        .MemWriteD( MemWrite ),
-        .BranchD( Branch ),
-        .ALUSrcD( ALUSrc ),
-        .RegDstD( RegDst ),
-        .RegWriteD( RegWrite ),
-        .JumpD( Jump ),
-        .ALUControlD( ALUControl )
+        .OPCode( opcode ),
+        .Funct( funct ),
+        .MemToReg( MemToRegD ),
+        .MemWrite( MemWriteD ),
+        .Branch( BranchD ),
+        .ALUSrc( ALUSrcD ),
+        .RegDst( RegDstD ),
+        .RegWrite( RegWriteD ),
+        .Jump( JumpD ),
+        .ALUControl( ALUControlD )
     );
     regfile regfile_id(
-        .read1( RD1 ),
-        .read2( RD2 ),
-        .rs( A1 ),
-        .rt( A2 ),
-        .WriteRegW( A3 ),
-        .ResultW( WD3 ),
-        .RegWriteW( WE3 ),
+        .RD1( read1 ),
+        .RD2( read2 ),
+        .A1( rd ),
+        .A2( rt ),
+        .A3( WriteRegW ),
+        .WD3( ResultW ),
+        .WE3( RegWriteW ),
         .clk( clk )
     );
 
