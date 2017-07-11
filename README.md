@@ -13,12 +13,13 @@ Current progress:
         </ul>
    </li>
    <li>IF, ID, EX, MEM, WB are written</li>
+   <li>t_IF is written and IF works as intended</li>
    <li>Single Cyle Processor Module is written</li>
 </ul>
 
 To Do List:
 <ol>
-<li>Test IF, ID, EX, MEM, WB modules</li>
+<li>Test ID, EX, MEM, WB modules</li>
 <li>Test Single Cycle Processor</li>
 <li>Write Radix-4 Booth Encoded Multiplication Module<ol>
     <li>Create HI/LO registers in RF</li></ol></li>
