@@ -19,8 +19,8 @@ Current progress:
 
 To Do List:
 <ol>
-<li>Test ID, EX, MEM, WB modules</li>
-<li>Test Single Cycle Processor</li>
+<li>Write tests for ID, EX, MEM, WB and verify the modules</li>
+<li>Write a test for the Single Cycle Processor and make sure it works</li>
 <li>Write Radix-4 Booth Encoded Multiplication Module<ol>
     <li>Create HI/LO registers in RF</li></ol></li>
 <li>Write L/R Arithmetic/Logical shift function and module</li>
