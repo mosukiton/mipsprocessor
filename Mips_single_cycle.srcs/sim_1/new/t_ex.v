@@ -15,7 +15,10 @@
 // 
 // Revision:
 // Revision 0.01 - File Created
-// Additional Comments:
+// Additional Comments: Just like with t_id, full testing of alu.v is not needed
+// as that was done in t_alu. This testbench tests the multiplexers in this block
+// to make sure they work as intended, as well as the wires are connected
+// correctly. The branch adder is also given a simple test too.
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -42,7 +45,7 @@ module t_ex;
         .MemToRegE2( memtoreg2 ),
         .MemWriteE2( memwrite2 ),
         .BranchE2( branch2 ),
-        .ZeroE( zerowire ),
+        .ZerowireE( zerowire ),
         .PCPlus4E( pcplus4 ),
         .srcA( srca ),
         .RegRead2( regread2 ),
@@ -61,13 +64,35 @@ module t_ex;
     initial begin
 
         // Initialise the inputs
+        pcplus4 = 0; srca = 0; regread2 = 0; signimm = 0;
+        rt = 0; rd = 0;
+        alucontrol = 0;
+        alusrc = 0; regdst = 0; regwrite1 = 0; memtoreg1 = 0; memwrite1 = 0; branch1 = 0;
 
+        // display test signals 
+        $display(srca);
+        $display(regread2);
 
         // Wait 100ns for global resets
+        #100;
 
+        // Test RegDst
+        rt = 5'b01000; rd = 5'b01001; regdst = 1;
+        #20 regdst = 0; // writereg should switch from 0x09 to 0x08
+        #20 rt = 0; rd = 0; // reset
 
-        //Stimulus here
+        #100;
 
+        // Test ALUSrc with ALUControl (i.e. simulate a I-type and R-type instruction)
+        #20 srca = 32'h00001111; regread2 = 32'hFFFF0000; signimm = 32'hFFFFFFFF; alusrc = 0; alucontrol = 3'b001; // r-type or instruction
+        // expected output should be 00001111 OR FFFF0000 = FFFF1111;
+        #20 alusrc = 1; // i-type or instruction,  expected output should be 00001111 OR FFFFFFFF = FFFFFFFF
+        #20 srca = 0; regread2 = 0; signimm = 0; alusrc = 0; alucontrol = 3'b000; // reset
+
+        #100;
+
+        // Test Branch Circuit
+        pcplus4 = 32'h00000004; signimm = 32'h00000001; // expected output: pcbranch =  4 + (1<<2) = 32'h00000008;
     end
 
 endmodule

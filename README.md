@@ -13,23 +13,23 @@ Current progress:
         </ul>
    </li>
    <li>IF, ID, EX, MEM, WB are written</li>
-   <li>t_IF, t_ID  is written and IF, ID now works as intended</li>
+   <li>t_IF, t_ID and t_EX are written and IF, ID and EX now works as intended</li>
    <li>Single Cyle Processor Module is written</li>
 </ul>
 
 To Do List:
 <ol>
-<li>Write tests for EX, MEM, WB and verify the modules</li>
-<li>Write a test for the Single Cycle Processor and make sure it works</li>
-<li>Write Radix-4 Booth Encoded Multiplication Module<ol>
-    <li>Create HI/LO registers in RF</li></ol></li>
-<li>Write L/R Arithmetic/Logical shift function and module</li>
-<li>Research and write a module for division</li>
-<li>Create new Control Signals where necessary and adjust control unit code</li>
-<li>Test New modules:<ol>
-    <li>Individually</li>
-    <li>As part of their greater modules (ID, EX and WB)</li>
-    <li>As part of the Single Cycle Processor</li></ol></li>
-<li>Pipeline the IF, ID, EX, MEM and WB modules</li>
-<li>Test the pipelined modules as a complete Pipelined Processor</li>
+    <li>Write tests for MEM and WB and verify the modules</li>
+    <li>Write a test for the Single Cycle Processor and make sure it works</li>
+    <li>Write Radix-4 Booth Encoded Multiplication Module<ol>
+        <li>Create HI/LO registers in RF</li></ol></li>
+    <li>Write L/R Arithmetic/Logical shift function and module</li>
+    <li>Research and write a module for division</li>
+    <li>Create new Control Signals where necessary and adjust control unit code</li>
+    <li>Test New modules:<ol>
+        <li>Individually</li>
+        <li>As part of their greater modules (ID, EX and WB)</li>
+        <li>As part of the Single Cycle Processor</li></ol></li>
+    <li>Pipeline the IF, ID, EX, MEM and WB modules</li>
+    <li>Test the pipelined modules as a complete Pipelined Processor</li>
 </ol>

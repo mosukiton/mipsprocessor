@@ -26,21 +26,21 @@
 module execute(
     output [31:0] ALUResult, PCBranchE, WriteDataE,
     output [4:0] WriteRegE,
-    output RegWriteE2, MemToRegE2, MemWriteE2, BranchE2, ZeroE,
+    output RegWriteE2, MemToRegE2, MemWriteE2, BranchE2, ZerowireE,
     input [31:0] PCPlus4E, srcA, RegRead2, SignImmE,
     input [4:0] rt, rd,
     input [2:0] ALUControlE,
     input ALUSrcE, RegDstE, RegWriteE1, MemToRegE1, MemWriteE1, BranchE1
     );
 
-    wire [31:0] srcB, WASignImmE, PCBranchE;
+    wire [31:0] srcB, WASignImmE;
     
     alu alu_ex(
         .ALUResult( ALUResult ),
-        .Zero( ZeroE ),
+        .Zero( ZerowireE ),
         .A( srcA ),
         .B( srcB ),
-        .control( ALUcontrolE )
+        .control( ALUControlE )
     );
 
     // RegDst mux and ALUSrc mux
