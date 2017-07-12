@@ -37,10 +37,10 @@ module execute(
     
     alu alu_ex(
         .ALUResult( ALUResult ),
-        .ZeroE( Zero ),
-        .srcA( A ),
-        .srcB( B ),
-        .ALUControlE( control )
+        .Zero( ZeroE ),
+        .A( srcA ),
+        .B( srcB ),
+        .control( ALUcontrolE )
     );
 
     // RegDst mux and ALUSrc mux
