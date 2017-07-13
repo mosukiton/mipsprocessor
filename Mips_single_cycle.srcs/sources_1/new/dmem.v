@@ -26,7 +26,7 @@ module dmem(
     input   WE, clk
     );
 
-    reg [31:0] RAM [255:0];
+    reg [31:0] RAM [0:255];
 
     assign RD = (A != 0) ? RAM[A] : 0;
 
