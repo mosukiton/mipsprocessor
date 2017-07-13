@@ -38,7 +38,7 @@ module memoryaccess(
 
     dmem dmem_mem(
         .RD( ReadDataM ),
-        .A( ALUResultsIn ),
+        .A( ALUResultIn ),
         .WD( WriteDataM ),
         .WE( MemWriteM ),
         .clk( clk )
