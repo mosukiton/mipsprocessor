@@ -12,14 +12,12 @@ Current progress:
             <li>Data Memory</li>
         </ul>
    </li>
-   <li>IF, ID, EX, MEM, WB are written</li>
-   <li>t_IF, t_ID, t_EX and t_MEM are written and IF, ID, EX and MEM now works as intended</li>
+   <li>IF, ID, EX, MEM, WB are written and verified</li>
    <li>Single Cyle Processor Module is written</li>
 </ul>
 
 To Do List:
 <ol>
-    <li>Write test for WB and verify the module</li>
     <li>Write a test for the Single Cycle Processor and make sure it works</li>
     <li>Write Radix-4 Booth Encoded Multiplication Module<ol>
         <li>Create HI/LO registers in RF</li></ol></li>
