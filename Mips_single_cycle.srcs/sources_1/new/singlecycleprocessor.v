@@ -21,13 +21,13 @@
 
 
 module singlecycleprocessor(
-    input clk
+    input clk, reset
 );
 
     // Control Signals
     wire [2:0] ALUControl;
     wire MemToReg, MemWrite, Branch, ALUSrc, RegDst, RegWrite, Jump;
-    wire Zero, PCSrc;
+    wire Zerowire, PCSrc;
 
     // Instruction bus
     wire [31:0] instruction;
@@ -41,9 +41,10 @@ module singlecycleprocessor(
         .PCPlus4F( PCPlus4 ),
         .instruction( instruction ),
         .PCBranchF( PCBranch ),
-        .WAinstr( WAJumpInstruction ),
+        .WAinstrF( WAJumpInstruction ),
         .clk( clk ),
-        .jump( Jump ),
+        .reset( reset ),
+        .JumpF( Jump ),
         .PCSrcF( PCSrc )
     );
 
@@ -58,6 +59,7 @@ module singlecycleprocessor(
         .ALUControlD( ALUControl ),
         .RegWriteD( RegWrite ),
         .MemToRegD( MemToReg ),
+        .MemWriteD( MemWrite ),
         .BranchD( Branch ),
         .ALUSrcD( ALUSrc ),
         .RegDstD( RegDst ),
@@ -78,7 +80,7 @@ module singlecycleprocessor(
         .RegWriteE2( RegWrite ),
         .MemToRegE2( MemToReg ),
         .BranchE2( Branch ),
-        .ZeroE( Zero ),
+        .ZerowireE( Zerowire ),
         .PCPlus4E( PCPlus4 ),
         .srcA( RegRead1 ),
         .RegRead2( RegRead2 ),
@@ -88,7 +90,7 @@ module singlecycleprocessor(
         .ALUControlE( ALUControl ),
         .ALUSrcE( ALUSrc ),
         .RegDstE( RegDst ),
-        .RegWriteE1( RegWriteE ),
+        .RegWriteE1( RegWrite ),
         .MemToRegE1( MemToReg ),
         .MemWriteE1( MemWrite ),
         .BranchE1( Branch )
@@ -110,7 +112,7 @@ module singlecycleprocessor(
         .MemWriteM( MemWrite ),
         .MemToRegM1( MemToReg ),
         .RegWriteM1( RegWrite ),
-        .ZeroM( Zero ),
+        .ZerowireM( Zerowire ),
         .clk( clk )
     );
 
@@ -119,12 +121,22 @@ module singlecycleprocessor(
         .WriteRegW2( WriteReg ),
         .RegWriteW2( RegWrite ),
         .ReadDataW( ReadData ),
-        .ALUResultsW( ALUResult ),
+        .ALUResultW( ALUResult ),
         .WriteRegW1( WriteReg ),
         .MemToRegW( MemToReg ),
-        .RegWrite1( RegWrite )
+        .RegWriteW1( RegWrite )
     );
 
-    assign PCSrc = Branch & Zero;
+    assign PCSrc = Branch & Zerowire;
+
+    initial begin
+        IF.PC = 0;
+        $display(IF.PC);
+    end
+
+    //initial begin
+        //IF.PCPrimeReg = 0;
+        //$display(IF.PCPrimeReg);
+    //end
 
 endmodule
