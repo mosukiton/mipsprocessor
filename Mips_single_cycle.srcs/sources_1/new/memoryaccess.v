@@ -28,26 +28,26 @@
 
 
 module memoryaccess(
-    output [31:0] ReadDataM, ALUResultOut, PCBrancM2,
+    output [31:0] ReadDataM, ALUResultOut, PCBranchM2,
     output [4:0] WriteRegM2, 
     output RegWriteM2, MemToRegM2, PCSrcM,
     input [31:0] WriteDataM, ALUResultIn, PCBranchM1,
     input [4:0] WriteRegM1,
-    input BranchM, MemWriteM, MemToRegM1, RegWriteM1, ZeroM, clk
+    input BranchM, MemWriteM, MemToRegM1, RegWriteM1, ZerowireM, clk
     );
 
     dmem dmem_mem(
-        .ReadDataM( RD ),
-        .ALUResultsIn( A ),
-        .WriteDataM( WD ),
-        .MemWriteM( WE ),
+        .RD( ReadDataM ),
+        .A( ALUResultsIn ),
+        .WD( WriteDataM ),
+        .WE( MemWriteM ),
         .clk( clk )
     );
 
-    assign PCSrcM = BranchM & ZeroM;
+    assign PCSrcM = BranchM & ZerowireM;
 
     //Send signals to next section
-    assign ALUResultsOut = ALUResultsIn;
+    assign ALUResultOut = ALUResultIn;
     assign WriteRegM2 = WriteRegM1;
     assign PCBranchM2 = PCBranchM1;
     assign MemToRegM2 = MemToRegM1;
