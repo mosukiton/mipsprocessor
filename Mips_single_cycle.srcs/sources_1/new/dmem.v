@@ -28,11 +28,11 @@ module dmem(
 
     reg [31:0] RAM [0:255];
 
-    assign RD = (A != 0) ? RAM[A] : 0;
+    assign RD = (A != 0) ? RAM[A[7:0]] : 0;
 
     always @ (posedge clk)
         if (WE)
-            RAM[A] <= WD;
+            RAM[A[7:0]] <= WD;
             // when a 32 bit number is sent to the address field, this is the calculated
             // address from the ALU. Meaning that the instruction is for "lw" or "sw".
             // Another indicator for this is when the signal "MemWrite" is 1.
