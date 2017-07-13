@@ -85,14 +85,19 @@ module t_ex;
 
         // Test ALUSrc with ALUControl (i.e. simulate a I-type and R-type instruction)
         #20 srca = 32'h00001111; regread2 = 32'hFFFF0000; signimm = 32'hFFFFFFFF; alusrc = 0; alucontrol = 3'b001; // r-type or instruction
-        // expected output should be 00001111 OR FFFF0000 = FFFF1111;
-        #20 alusrc = 1; // i-type or instruction,  expected output should be 00001111 OR FFFFFFFF = FFFFFFFF
+        // expected output should be 00001111 OR FFFF0000 = FFFF1111; writedata = 32'hFFFF0000; zerowire = 0;
+        #20 alusrc = 1; // i-type or instruction,  expected output should be 00001111 OR FFFFFFFF = FFFFFFFF; writedata = 32'hFFFF0000; zerowire = 0;
         #20 srca = 0; regread2 = 0; signimm = 0; alusrc = 0; alucontrol = 3'b000; // reset
 
         #100;
 
         // Test Branch Circuit
         pcplus4 = 32'h00000004; signimm = 32'h00000001; // expected output: pcbranch =  4 + (1<<2) = 32'h00000008;
+
+        // Test Follow-through signals
+        #20 regwrite1 = 1; memtoreg1 = 1; memwrite1 = 1; branch1 = 1;
+        // expected output regwrite2 = 1; memtoreg2 = 1; memwrite2 = 1; branch2 = 1;
+        #20 regwrite1 = 0; memtoreg1 = 0; memwrite1 = 0; branch1 = 0;
     end
 
 endmodule
