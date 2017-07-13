@@ -32,4 +32,5 @@ To Do List:
         <li>As part of the Single Cycle Processor</li></ol></li>
     <li>Pipeline the IF, ID, EX, MEM and WB modules</li>
     <li>Test the pipelined modules as a complete Pipelined Processor</li>
+    <li>Consider writing Data forwarding code.</li>
 </ol>
