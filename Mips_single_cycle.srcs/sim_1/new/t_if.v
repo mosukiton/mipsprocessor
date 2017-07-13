@@ -25,7 +25,7 @@ module t_if;
     // Inputs
     reg [31:0] pcBranch;
     reg [27:0] waInstruction;
-    reg clk, jump, pcSrc;
+    reg clk, reset, jump, pcSrc;
 
     // Outputs
     wire [31:0] pcPlus4, instruction;
@@ -37,6 +37,7 @@ module t_if;
         .PCBranchF( pcBranch ),
         .WAinstrF( waInstruction ),
         .clk( clk ),
+        .reset( reset ),
         .JumpF( jump ),
         .PCSrcF( pcSrc )
     );
@@ -57,11 +58,17 @@ module t_if;
         waInstruction = 0;
         jump = 0;
         pcSrc = 0;
+        reset = 0;
 
-        #100; // Allow normal PC implementation to occur
+        #100; // Allow normal PC operation to occur for 100 ns 
+
+        #10 reset = 1; // Reset program counter
+        #20 reset = 0; // continue normal operation
+
+        #100 // Allow normal PC operation to occur for 100 ns
 
         // State 1: Branch Instruction
-        #10 jump = 0; pcSrc = 1; pcBranch = 32'h00000004;
+        #20 jump = 0; pcSrc = 1; pcBranch = 32'h00000004;
         #20 jump = 0; pcSrc = 0; pcBranch = 32'h00000000;
 
         #100; // Wait 100 until next state is tested

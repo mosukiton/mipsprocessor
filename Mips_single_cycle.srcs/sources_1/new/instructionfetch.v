@@ -32,6 +32,8 @@
 //
 // Added signals for the registers so I could monitor them on the simulation.
 //
+// Added reset switch to PC and PCPrimeReg register in order to initialise a 0
+// value in them during normal operation.
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -40,7 +42,7 @@ module instructionfetch(
     output [31:0] instruction,
     input [31:0] PCBranchF,
     input [27:0] WAinstrF,
-    input clk, JumpF, PCSrcF
+    input clk, reset, JumpF, PCSrcF
     );
 
     wire [31:0] PCJump;
@@ -54,21 +56,29 @@ module instructionfetch(
 
     assign controlSignals = {JumpF, PCSrcF};
 
-    always @ (controlSignals or posedge clk) begin
-        case (controlSignals)
-            2'b00: PCPrimeReg <= PCPlus4F;
-            2'b01: PCPrimeReg <= PCBranchF;
-            2'b10: PCPrimeReg <= PCJump;
-            default: PCPrimeReg <= PCPlus4F;
-        endcase
+    always @ (controlSignals or posedge reset or posedge clk) begin
+        if(reset) begin
+            PCPrimeReg <= 0;
+        end else begin
+            case (controlSignals)
+                2'b00: PCPrimeReg <= PCPlus4F;
+                2'b01: PCPrimeReg <= PCBranchF;
+                2'b10: PCPrimeReg <= PCJump;
+                default: PCPrimeReg <= 0;
+            endcase
+        end
     end
 
     assign PCJump = {PCPlus4F[31:28], WAinstrF};
 
     assign PCPlus4F = PCPrimeReg + 32'h4;
 
-    always @ (posedge clk) begin
-        PC <= PCPrimeReg;
+    always @ (posedge clk or posedge reset) begin
+        if(reset) begin
+            PC <= 0;
+        end else begin
+            PC <= PCPrimeReg;
+        end
     end
 
     initial begin
