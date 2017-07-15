@@ -44,9 +44,10 @@ module t_scp;
     // Stimulus here
     initial begin
 
-        reset = 1;
+        reset = 0;
         #40 reset = 1;
         #40 reset = 0;
+        //#560 reset = 1;
 
     end
 
