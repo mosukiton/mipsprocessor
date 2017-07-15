@@ -13,12 +13,12 @@ Current progress:
         </ul>
    </li>
    <li>IF, ID, EX, MEM, WB are written and verified</li>
-   <li>Single Cyle Processor Module is written</li>
+   <li>Single Cyle Processor Module and corresponding testbench is written</li>
 </ul>
 
 To Do List:
 <ol>
-    <li>Write a test for the Single Cycle Processor and make sure it works</li>
+    <li>Write own test machine code to check that the full operation of the processor is working in simulation.</li>
     <li>Write Radix-4 Booth Encoded Multiplication Module<ol>
         <li>Create HI/LO registers in RF</li></ol></li>
     <li>Write L/R Arithmetic/Logical shift function and module</li>
