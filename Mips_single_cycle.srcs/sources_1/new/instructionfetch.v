@@ -47,7 +47,7 @@ module instructionfetch(
 
     wire [31:0] PCJump;
     wire [1:0] controlSignals;
-    reg [31:0] PC, PCPrimeReg;
+    reg [31:0] PC, PCPrime;
 
     instrmem instrmem_if(
         .A( PC ),
@@ -58,34 +58,36 @@ module instructionfetch(
 
     always @ (controlSignals or posedge reset or posedge clk) begin
         if(reset) begin
-            PCPrimeReg <= 0;
+            PC <= 0;
+            PCPrime <= 0;
         end else begin
             case (controlSignals)
-                2'b00: PCPrimeReg <= PCPlus4F;
-                2'b01: PCPrimeReg <= PCBranchF;
-                2'b10: PCPrimeReg <= PCJump;
-                default: PCPrimeReg <= 0;
+                2'b00: PCPrime <= PCPlus4F;
+                2'b01: PCPrime <= PCBranchF;
+                2'b10: PCPrime <= PCJump;
+                default: PCPrime <= 0;
             endcase
+            PC <= PCPrime;
         end
     end
 
     assign PCJump = {PCPlus4F[31:28], WAinstrF};
 
-    assign PCPlus4F = PCPrimeReg + 32'h4;
+    assign PCPlus4F = PCPrime + 32'h4;
 
-    always @ (posedge clk or posedge reset) begin
-        if(reset) begin
-            PC <= 0;
-        end else begin
-            PC <= PCPrimeReg;
-        end
-    end
+    //always @ (posedge clk or posedge reset) begin
+        //if(reset) begin
+            //PC <= 0;
+        //end else begin
+            //PC <= PCPrime;
+        //end
+    //end
 
     initial begin
-        PC = 0;
-        PCPrimeReg = 0;
+        PC = 32'h00000000;
+        PCPrime = 32'h00000000;
         $display(PC);
-        $display(PCPrimeReg);
+        $display(PCPrime);
     end
 
 endmodule
