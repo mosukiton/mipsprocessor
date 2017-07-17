@@ -26,7 +26,7 @@ module instrmem(
     reg [7:0] mem [0:127];
 
     initial begin
-        $readmemh("memfilebyte.dat", mem); // initialise ROM
+        $readmemh("testinstructions.dat", mem); // initialise ROM
     end
 
     //RD = a concantenation of 4 bytes in adjacent addresses
