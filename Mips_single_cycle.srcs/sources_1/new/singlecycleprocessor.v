@@ -47,24 +47,37 @@ module singlecycleprocessor(
     wire RegWriteE2M, MemToRegE2M, BranchE2M, ZerowireE2M, MemWriteE2M;
 
     instructionfetch IF(
+        .PCPlus4F( PCPlus4F2D ),
         .instruction( instruction ),
-        .PCBranchF( PCBranchM2F ), .WAinstrF( WAInstrD2F ), .PCPlus4F( PCPlus4F2D ),
-        .clk( clk ), .reset( reset ),
-        .JumpF( JumpD2F ), .PCSrcF( PCSrcM2F )
+        .PCBranchF( PCBranchM2F ),
+        .WAinstrF( WAInstrD2F ),
+        .clk( clk ),
+        .reset( reset ),
+        .JumpF( JumpD2F ),
+        .PCSrcF( PCSrcM2F )
     );
 
-
     instructiondecode ID(
-        .read1( RFRead1D2E ), .read2( RFRead2D2E ),
+        .read1( RFRead1D2E ),
+        .read2( RFRead2D2E ),
         .immediateSE( ImmSeD2E ),
         .PCPlus4D2( PCPlus4D2E ),
         .WAinstrD( WAInstrD2F ),
-        .rt( rtD2E ), .rd( rdD2E ),
+        .rt( rtD2E ),
+        .rd( rdD2E ),
         .ALUControlD( ALUControlD2E ),
-        .RegWriteD( RegWriteD2E ), .MemToRegD( MemToRegD2E ), .MemWriteD( MemWriteD2E ), .BranchD( BranchD2E ), .ALUSrcD( ALUSrcD2E ), .RegDstD( RegDstD2E ), .JumpD( JumpD2F ),
+        .RegWriteD( RegWriteD2E ),
+        .MemToRegD( MemToRegD2E ),
+        .MemWriteD( MemWriteD2E ),
+        .BranchD( BranchD2E ),
+        .ALUSrcD( ALUSrcD2E ),
+        .RegDstD( RegDstD2E ),
+        .JumpD( JumpD2F ),
         .PCPlus4D1( PCPlus4F2D ),
         .instruction( instruction ),
-        .ResultW( ResultW2D ), .WriteRegW( WriteRegW2D ), .RegWriteW( RegWriteW2D ),
+        .ResultW( ResultW2D ),
+        .WriteRegW( WriteRegW2D ),
+        .RegWriteW( RegWriteW2D ),
         .clk( clk )
     );
 

@@ -27,7 +27,7 @@ module ctrlunit(
     );
 
     wire [1:0] ALUOp;
-    wire zerosignal;
+    //wire zerosignal;
 
     maindecoder md_inst(
         .op( OPCode ),

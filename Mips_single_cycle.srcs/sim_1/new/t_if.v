@@ -45,10 +45,9 @@ module t_if;
     // Initialise the clock
     initial begin
         clk = 0;
-        #20;
         forever begin
-            #10 clk = 1;
-            #10 clk = 0;
+            #20 clk = 1;
+            #20 clk = 0;
         end
     end
 
@@ -60,22 +59,21 @@ module t_if;
         pcSrc = 0;
         reset = 0;
 
-        #100; // Allow normal PC operation to occur for 100 ns 
+        reset = 1; // Reset program counter
+        #40 reset = 0; // continue normal operation
 
-        #10 reset = 1; // Reset program counter
-        #20 reset = 0; // continue normal operation
+        #260 // Allow normal PC operation to occur for 100 ns
 
-        #100 // Allow normal PC operation to occur for 100 ns
+        // State 2: Jump Instruction
+        jump = 1; pcSrc = 0; waInstruction = 27'h000000;
+        #40 jump = 0; pcSrc = 0; waInstruction = 27'h000000;
 
         // State 1: Branch Instruction
-        #20 jump = 0; pcSrc = 1; pcBranch = 32'h00000004;
-        #20 jump = 0; pcSrc = 0; pcBranch = 32'h00000000;
+        #40 jump = 0; pcSrc = 1; pcBranch = 32'h0000001C;
+        #40 jump = 0; pcSrc = 0; pcBranch = 32'h00000000;
 
         #100; // Wait 100 until next state is tested
 
-        // State 2: Jump Instruction
-        #20 jump = 1; pcSrc = 0; waInstruction = 27'h00002c;
-        #20 jump = 0; pcSrc = 0; waInstruction = 27'h000000;
 
     end
 

@@ -61,13 +61,13 @@ module instructionfetch(
             PC <= 0;
             PCPrime <= 0;
         end else begin
+            PC <= PCPrime;
             case (controlSignals)
                 2'b00: PCPrime <= PCPlus4F;
                 2'b01: PCPrime <= PCBranchF;
                 2'b10: PCPrime <= PCJump;
                 default: PCPrime <= 0;
             endcase
-            PC <= PCPrime;
         end
     end
 

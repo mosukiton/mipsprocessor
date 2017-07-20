@@ -34,10 +34,10 @@ module t_scp;
     // Initialise the clock
     initial begin
         clk = 0;
-        #100;
+        //#100;
         forever begin
-            #20 clk = 1;
-            #20 clk = 0;
+            #10 clk = 1;
+            #10 clk = 0;
         end
     end
 
@@ -45,8 +45,8 @@ module t_scp;
     initial begin
 
         reset = 0;
-        #40 reset = 1;
-        #40 reset = 0;
+        #20 reset = 1;
+        #20 reset = 0;
         //#560 reset = 1;
 
     end
