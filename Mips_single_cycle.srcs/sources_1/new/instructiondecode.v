@@ -60,6 +60,7 @@ module instructiondecode(
         .Jump( JumpD ),
         .ALUControl( ALUControlD )
     );
+    
     regfile regfile_id(
         .RD1( read1 ),
         .RD2( read2 ),
@@ -72,7 +73,7 @@ module instructiondecode(
     );
 
     // word align the jump instruction
-    assign WAinstrD = jumpaddr << 2;
+    assign WAinstrD = {jumpaddr, {2'b00}};
 
     // Send PCPlus4 to the next section by not interacting with it here. It will be pipelined in the pipeline processor.
     assign PCPlus4D2 = PCPlus4D1;

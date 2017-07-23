@@ -43,9 +43,15 @@ module t_scp;
 
     // Stimulus here
     initial begin
+        $display(t_scp.uut.ID.jumpaddr);
+        $display(t_scp.uut.ID.WAinstrD);
+        $display(t_scp.uut.IF.WAinstrF);
+        $display(t_scp.uut.IF.PCPrime);
+        $display(t_scp.uut.IF.PC);
+        $display(t_scp.uut.IF.PCJump);
 
         reset = 0;
-        #20 reset = 1;
+        #30 reset = 1;
         #20 reset = 0;
         //#560 reset = 1;
 
