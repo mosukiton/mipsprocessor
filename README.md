@@ -14,11 +14,13 @@ Current progress:
    </li>
    <li>IF, ID, EX, MEM, WB are written and verified</li>
    <li>Single Cyle Processor Module and corresponding testbench is written</li>
+   <li>Single Cycle Processor works correctly with single instructions, now need to test a MIPS program</li>
+   <li>testinstruction.dat is written in 8-bit hex code.</li>
 </ul>
 
 To Do List:
 <ol>
-    <li>Write own test machine code to check that the full operation of the processor is working in simulation.</li>
+    <li>Debug MIPS machine code in simulation.</li>
     <li>Write Radix-4 Booth Encoded Multiplication Module<ol>
         <li>Create HI/LO registers in RF</li></ol></li>
     <li>Write L/R Arithmetic/Logical shift function and module</li>
