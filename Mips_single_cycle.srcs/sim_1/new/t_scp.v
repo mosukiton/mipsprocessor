@@ -34,7 +34,7 @@ module t_scp;
     // Initialise the clock
     initial begin
         clk = 0;
-        //#100;
+        #20;
         forever begin
             #10 clk = 1;
             #10 clk = 0;
@@ -51,9 +51,8 @@ module t_scp;
         $display(t_scp.uut.IF.PCJump);
 
         reset = 0;
-        #30 reset = 1;
-        #20 reset = 0;
-        //#560 reset = 1;
+        //#30 reset = 1;
+        //#20 reset = 0;
 
     end
 

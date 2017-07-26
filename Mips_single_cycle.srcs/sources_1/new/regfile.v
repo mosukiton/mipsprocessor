@@ -49,7 +49,13 @@ module regfile(
     reg [31:0] rf [0:31];
     initial rf[0] = 32'h00000000;
 
-    always @ (posedge clk)
+    //always @ (posedge clk)                    // Uncomment for piplelined
+    //if (WE3 & (A3 != 5'b00000)) begin
+            //rf[A3] <= WD3;
+        //end
+
+
+    always @ *                                  // Uncomment for single-cycle
     if (WE3 & (A3 != 5'b00000)) begin
             rf[A3] <= WD3;
         end
